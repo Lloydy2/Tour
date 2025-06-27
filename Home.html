@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSCS Educational Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .header .description {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background-color: #f8f9fa;
+            border-bottom-color: #4285f4;
+            color: #4285f4;
+        }
+
+        .nav-links a.active,
+        .nav-links a[aria-current="page"] {
+            border-bottom-color: #4285f4;
+            color: #4285f4;
+            background-color: #f0f6ff;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        /* Day Cards Grid */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .day-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .day-header {
+            background: #4285f4;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+
+        .day-number {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+
+        .day-title {
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .day-date {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .day-content {
+            padding: 30px;
+        }
+
+        .day-content h3 {
+            color: #4285f4;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .day-content p {
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .day-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .day-content li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        /* Speakers Section */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .speaker-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: 300;
+        }
+
+        .speaker-name {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .speaker-title {
+            color: #4285f4;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .speaker-bio {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* Venues Section */
+        .venues-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 40px;
+        }
+
+        .venue-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .venue-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: 300;
+        }
+
+        .venue-content {
+            padding: 30px;
+        }
+
+        .venue-name {
+            font-size: 1.4em;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .venue-address {
+            color: #4285f4;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .venue-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Goal Section */
+        .goal-section {
+            background: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .goal-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .goal-content h2 {
+            font-size: 2.2em;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .goal-content p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Company Photos */
+        .company-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        .company-photos img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+            }
+            
+            .nav-links a {
+                padding: 15px 20px;
+            }
+            
+            .days-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Bachelor of Science in Computer Science Educational Tour 2025</h1>
+            <p class="subtitle">A three-day exposure in the real-world environment and tecnologies of Computer Science </p>
+            <p class="description">An immersive experience featuring company visits, hands-on workshops, expert lectures, and practical coding sessions</p><br>
+            <p class="owner-name">by Gerald Lloyd S. Labacanacruz</p>
+            <p class="year">2025</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="Home.html#days" id="nav-home">Days</a></li>
+                    <li><a href="Speakers.html" id="nav-speakers">Speakers</a></li>
+                    <li><a href="Venue.html" id="nav-venues">Venues</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Days Section -->
+            <section id="days" class="section">
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <!-- Foundever Logo -->
+                            <img src="img/Foundever.jpg" alt="Foundever Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Foundever</div>
+                            <div class="day-title">BPO Company</div>
+                            <div class="day-date">Tuesday, June 10, 2025 (AM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>BPO & Tech Company Visit</h3>
+                            <p>A global leader in customer experience (CX) and business process outsourcing (BPO) services. Offers a wide range of solutions, including customer service, technical support, and sales support, for various businesses..</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Company Introduction and History</li>
+                                <li>Team introductions</li>
+                                <li>Motivational Speakers</li>
+                                <li>IT Team Workplance</li>
+                                <li>Company and Office tour</li>
+                            </ul>
+                            
+                            <p>Students will learn industry-standard tools and methodologies used in professional web development environments.</p>
+                            
+                            <!-- Photo Gallery Section -->
+                            <div class="company-photos">
+                                <img src="img\Foundever team.jpg" alt="Foundever Office" style="width:100px;height:100px;object-fit:cover;margin:5px;border-radius:8px;">
+                                <img src="img\Foundever team.jpg" alt="Foundever Team" style="width:100px;height:100px;object-fit:cover;margin:5px;border-radius:8px;">
+                                <!-- Add more images as needed -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <img src="img/Google.png" alt="Google Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Google Philippines</div>
+                            <div class="day-title">Technology and IT</div>
+                            <div class="day-date">Tuesday, June 10, 2025 (PM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>Tech Company Visit</h3>
+                            <p>The local entity of the global technology company, Google, focused on serving the needs of Filipinos and contributing to the country's digital growth..</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Speaker Introduction</li>
+                                <li>Google Philippines history</li>
+                                <li>Google's New and Future Technologies</li>
+                                <li>Google Philippines Career and Opportunities</li>
+                            </ul>
+                            
+                            <p>Participants will build a complete responsive website from scratch, applying current industry best practices.</p>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <img src="img/Teleperformance.jpg" alt="Teleperformance Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Teleperformance</div>
+                            <div class="day-title">BPO Company</div>
+                            <div class="day-date">Wednesday, June 11, 2025 (AM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>BPO Company Visit</h3>
+                            <p>A global digital business services company that specializes in providing customer experience management, business process outsourcing, and back-office services to various industries.</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Speaker Introduction</li>
+                                <li>Company History</li>
+                                <li>Company Jobs and Opportunities</li>
+                                <li>Office and Workplace Tour</li>
+                            </ul>
+                            
+                            <p>Students will transform their static websites into dynamic, interactive web applications with real-time functionality.</p>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <img src="img/Kollab.png" alt="Kollab Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Kollab</div>
+                            <div class="day-title">BPO & Tech Company</div>
+                            <div class="day-date">Wednesday, June 11, 2025 (PM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>BPO & Tech Company Visit</h3>
+                            <p>A premier digital transformation advisor for over 1,100 companies across Southeast Asia..</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Company Introduction</li>
+                                <li>Workshop on how to have a good Linkedin Profile</li>
+                                <li>Lesson on different Detector algorithms and Neural Networds</li>
+                                <li>Discussion on how to have a Killer Job-Ready Portfolio</li>
+                            </ul>
+                            
+                            <p>Final day focuses on launching projects live and presenting completed work to industry professionals.</p>
+                        </div>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-header">
+                            <img src="img/ADV.png" alt="ADV Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Asian Development Bank</div>
+                            <div class="day-title">Development Bank</div>
+                            <div class="day-date">Thursday, June 12, 2025 (AM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>Tech & Bank Company Visit</h3>
+                            <p>A regional development bank established in 1966 to promote economic and social progress in the Asia-Pacific region.</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Workplace tour and History lesson</li>
+                                <li>Tour on Different auditoriums, Pantry</li>
+                                <li>IT Team work experience, work responsibility and lessons</li>
+                                <li>Q&A with IT teams and Students</li>
+                            </ul>
+                            
+                            <p>Students will learn industry-standard tools and methodologies used in professional web development environments.</p>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <img src="img/Microsourcing.jpg" alt="Microsourcing Logo" style="width:60px;height:60px;display:block;margin:0 auto 10px auto;background:#fff;border-radius:12px;">
+                            <div class="day-number">Microsourcing</div>
+                            <div class="day-title">BPO Company</div>
+                            <div class="day-date">Thursday, June 12, 2025 (PM)</div>
+                        </div>
+                        <div class="day-content">
+                            <h3>BPO Company Visit</h3>
+                            <p>A outsourcing that involves breaking down large projects or tasks into smaller, more manageable components that are then assigned to a large number of individuals or micro-teams, often through online platforms.</p>
+                            
+                            <h3>Activities:</h3>
+                            <ul>
+                                <li>Company History and Introduction</li>
+                                <li>Office and Pantry Tour</li>
+                                <li>Speaker lessos</li>
+                                <li>Speaker life and work lesson</li>
+                            </ul>
+                            
+                            <p>Participants will build a complete responsive website from scratch, applying current industry best practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary Section -->
+            <section id="days" class="section">
+                <h2 class="section-title">7-Day Educational Tour Itinerary</h2>
+                <div class="days-grid">
+                    <!-- Day 1 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 1</div>
+                            <div class="day-title">Arrival & Manila Tour</div>
+                            <div class="day-date">Monday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>9:00 AM</strong> - Arrival in Manila via bus</li>
+                                <li><strong>12:00 NN</strong> - Lunch at DJM Dormitory</li>
+                                <li><strong>1:30 PM</strong> - CITY TOUR: Intramuros, Rizal Park, Manila Cathedral, San Agustin Church, CCP, SM Mall of Asia</li>
+                                <li><strong>6:30 PM</strong> - Dinner @ DJM Dormitory</li>
+                                <li>Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 2 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 2</div>
+                            <div class="day-title">Company Visit</div>
+                            <div class="day-date">Tuesday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ DJM Dormitory</li>
+                                <li><strong>8:00 AM</strong> - Visit: Foundever Philippines (Pasig City)</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ DJM Dormitory</li>
+                                <li><strong>1:30 PM</strong> - Visit: Google Philippines (Taguig, BGC)</li>
+                                <li><strong>6:30 PM</strong> - Dinner @ DJM Dormitory</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 3 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 3</div>
+                            <div class="day-title">Company Visit</div>
+                            <div class="day-date">Wednesday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ DJM Dormitory</li>
+                                <li><strong>8:00 AM</strong> - Visit: Teleperformance Aura (Taguig, BGC)</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ DJM Dormitory</li>
+                                <li><strong>2:00 PM</strong> - Visit: Kollab (Madaluyong)</li>
+                                <li><strong>7:00 PM</strong> - Dinner @ DJM Dormitory / Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 4 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 4</div>
+                            <div class="day-title">Industry & Media</div>
+                            <div class="day-date">Thursday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ DJM Dormitory</li>
+                                <li><strong>8:00 AM</strong> - Visit: Asian Development Bank (Madaluyong City)</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ DJM Dormitory</li>
+                                <li><strong>2:00 PM</strong> - Visit: MicroSourcing (Madaluyong)</li>
+                                <li><strong>6:30 PM</strong> - Dinner @ DJM Dormitory / Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 5 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 5</div>
+                            <div class="day-title">Liesure Activities </div>
+                            <div class="day-date">Friday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ DJM Dormitory</li>
+                                <li><strong>8:00 AM</strong> - Visit: People's Park, Tagaytay City</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ DJM Coaster</li>
+                                <li><strong>2:00 PM</strong> - Visit: Sky Ranch, Tagaytay City</li>
+                                <li><strong>6:30 PM</strong> - Dinner @ DJM Dormitory / Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 6 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 6</div>
+                            <div class="day-title">Baguio City Tour</div>
+                            <div class="day-date">Saturday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>5:30 AM</strong> - Proceed to Baguio City</li>
+                                <li><strong>8:00 AM</strong> - Breakfast @ Hotel in Baguio City</li>
+                                <li><strong>9:00 AM</strong> - Tour: Baguio Cathedral, Bell Church, Strawberry Farm, Chinese Bell Church</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ Hotel</li>
+                                <li><strong>1:30 PM</strong> - Tour: Botanical Garden, Mansion House, Burnham Park</li>
+                                <li><strong>7:00 PM</strong> - Dinner @ Hotel / Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 7 -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 7</div>
+                            <div class="day-title">Baguio & Manila / Departure</div>
+                            <div class="day-date">Sunday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ Hotel</li>
+                                <li><strong>10:00 AM</strong> - (Optional) SM Baguio for Shopping</li>
+                                <li><strong>12:00 NN</strong> - Lunch @ Hotel</li>
+                                <li><strong>1:00 PM</strong> - Check-out / Head back to Manila</li>
+                                <li><strong>6:30 PM</strong> - Arrival in Manila</li>
+                                <li><strong>7:00 PM</strong> - Dinner @ DJM Dormitory / Rest</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Day 8 (Departure) -->
+                    <div class="day-card">
+                        <div class="day-header">
+                            <div class="day-number">Day 8</div>
+                            <div class="day-title">Departure</div>
+                            <div class="day-date">Monday</div>
+                        </div>
+                        <div class="day-content">
+                            <ul>
+                                <li><strong>7:00 AM</strong> - Breakfast @ DJM Dormitory / Rest</li>
+                                <li><strong>12:00 NN</strong> - Check-out DJM Dormitory / Proceed to the Airport / Departure for Zamboanga</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Web Development Educational Tour. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Adjust this value based on your sticky navbar height
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Adjust this value for better alignment
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.borderBottomColor = 'transparent';
+                link.style.color = '#333';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.borderBottomColor = '#4285f4';
+                    link.style.color = '#4285f4';
+                }
+            });
+        });
+
+        // Highlight the active navigation link
+        const path = window.location.pathname.toLowerCase();
+        if (path.includes('home.html')) {
+            document.getElementById('nav-home').classList.add('active');
+            document.getElementById('nav-home').setAttribute('aria-current', 'page');
+        } else if (path.includes('speakers.html')) {
+            document.getElementById('nav-speakers').classList.add('active');
+            document.getElementById('nav-speakers').setAttribute('aria-current', 'page');
+        } else if (path.includes('venue.html')) {
+            document.getElementById('nav-venues').classList.add('active');
+            document.getElementById('nav-venues').setAttribute('aria-current', 'page');
+        }
+    </script>
+</body>
+</html>

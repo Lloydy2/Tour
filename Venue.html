@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venues - BSCS Educational Tour</title>
+    <style>
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background-color: #f8f9fa;
+            border-bottom-color: #4285f4;
+            color: #4285f4;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 50px;
+        }
+
+        .venues-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .venue-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .venue-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: 300;
+        }
+
+        .venue-content {
+            padding: 30px;
+        }
+
+        .venue-name {
+            font-size: 1.4em;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .venue-address {
+            color: #4285f4;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .venue-description {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="Home.html#days">Days</a></li>
+                    <li><a href="Speakers.html">Speakers</a></li>
+                    <li><a href="Venue.html">Venues</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="venues" class="section">
+            <h2 class="section-title">The Venues</h2>
+            <div class="venues-grid">
+                <div class="venue-card">
+                    <div class="venue-image">🏢</div>
+                    <div class="venue-content">
+                        <div class="venue-name">Tech Innovation Hub</div>
+                        <div class="venue-address">123 Silicon Valley Drive, Tech District</div>
+                        <div class="venue-description">A state-of-the-art facility designed for collaborative learning and innovation. Features modern development labs, presentation spaces, and networking areas perfect for hands-on coding sessions and team collaboration.</div>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <div class="venue-image">🏛️</div>
+                    <div class="venue-content">
+                        <div class="venue-name">Digital Learning Center</div>
+                        <div class="venue-address">456 Education Boulevard, University Campus</div>
+                        <div class="venue-description">An advanced educational facility equipped with cutting-edge technology and flexible learning spaces. Ideal for workshops, lectures, and collaborative project development sessions.</div>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <div class="venue-image">🌟</div>
+                    <div class="venue-content">
+                        <div class="venue-name">Startup Incubator Space</div>
+                        <div class="venue-address">789 Innovation Street, Business District</div>
+                        <div class="venue-description">A dynamic co-working environment where startups and established companies collaborate. Provides real-world insights into the tech industry and entrepreneurial ecosystem.</div>
+                    </div>
+                </div>
+
+                <div class="venue-card">
+                    <div class="venue-image">📚</div>
+                    <div class="venue-content">
+                        <div class="venue-name">Knowledge Center</div>
+                        <div class="venue-address">101 Learning Avenue, Education City</div>
+                        <div class="venue-description">A modern library and research facility equipped with digital resources, collaborative spaces, and expert-led workshops for continuous learning.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
